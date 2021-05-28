@@ -4,7 +4,6 @@ import RobotHead from '../../assets/images/robot-head.svg'
 import { IoMdSend } from 'react-icons/io'
 import Api from '../../services/api'
 import SessionContext from '../../contexts/session'
-import {animateScroll, Element} from 'react-scroll'
 
 import './styles.css'
 const Chat = () => {
@@ -30,7 +29,6 @@ const Chat = () => {
         ...myArray
         ])
 
-        animateScroll.scrollToBottom('messenger')
     }
 
     return (
@@ -50,7 +48,7 @@ const Chat = () => {
                         </label>
                         <span>GUIA PROFF</span>
                     </header>
-                    <Element name="mensseger" id="menseger" className="chat-content">
+                    <div className="chat-content">
                         {
                             messages.map((m: any) => {
                                 return (
@@ -61,7 +59,7 @@ const Chat = () => {
                             })
                         }
 
-                    </Element>
+                    </div>
                     <footer>
                         <form onSubmit={handleSubmit}>
                             <input
