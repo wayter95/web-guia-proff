@@ -12,12 +12,13 @@
     width: 90%;
 }
 
-#session form span {
+#session .session-off span {
     color: #A6B0CF;
     font-size: 2.4rem;
 }
 
 #session form .input-content{
+    display: none;
     width: 100%;
     padding: 0.5rem;
     height: 4rem;
@@ -38,20 +39,19 @@
     outline: none;
 }
 
-#session form button{
+#session .session-off .button-session{
     background: #7269EF;
     border: none;
     color: #FFF;
     width: 80%;
     height: 4rem;
-    margin-left: 10%;
     border-radius: 1rem;
     transition: opacity 2ms;
     margin-top: 2rem;
     font-size: 3rem;
 }
 
-#session form button:hover{
+#session .session-off .button-session:hover{
     opacity: 0.8;
 }
 

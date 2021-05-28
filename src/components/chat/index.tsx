@@ -4,14 +4,14 @@ import RobotHead from '../../assets/images/robot-head.svg'
 import { IoMdSend } from 'react-icons/io'
 import Api from '../../services/api'
 import SessionContext from '../../contexts/session'
+import {animateScroll, Element} from 'react-scroll'
 
 import './styles.css'
 const Chat = () => {
     const { session } = useContext(SessionContext)
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState([
-        { id: 1, type: "incoming", body: "Olá, eu sou a GABY assistente virtual do Guia Proff" },
-        { id: 2, type: "incoming", body: "Eu te ajudarei com suas dificuldades na educação infantil" }
+        { id: 1, type: "incoming", body: "Sessão iniciada, digite uma mensagem para iniciar a conversa..." },
     ])
 
     async function handleSubmit(e: FormEvent) {
@@ -29,6 +29,8 @@ const Chat = () => {
         { id: messages.length + 1, type: 'outgoing', body: input },
         ...myArray
         ])
+
+        animateScroll.scrollToBottom('messenger')
     }
 
     return (
@@ -37,7 +39,6 @@ const Chat = () => {
                 !session &&
                 <div className="session-off">
                     <img src={RobotImg} alt="Iniciar Chat" />
-                    <span>PRENCHA O FORMULARIO PARA INICIAR O CHAT</span>
                 </div>
             }
             {
@@ -47,9 +48,9 @@ const Chat = () => {
                         <label>
                             <img src={RobotHead} alt="GABY" />
                         </label>
-                        <span>GABY</span>
+                        <span>GUIA PROFF</span>
                     </header>
-                    <div className="chat-content">
+                    <Element name="mensseger" id="menseger" className="chat-content">
                         {
                             messages.map((m: any) => {
                                 return (
@@ -60,7 +61,7 @@ const Chat = () => {
                             })
                         }
 
-                    </div>
+                    </Element>
                     <footer>
                         <form onSubmit={handleSubmit}>
                             <input
